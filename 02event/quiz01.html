@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <select onchange="aaa()">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <input type="text" id="text" >
+    <input type="text" onchange="함수();">
+
+    <div id="click">db클릭이벤트</div>
+    
+    <div onclick="alert('good');">내가 해보는거</div>
+
+    <button id="btn">addEventListener</button>
+
+    <script>
+        //위에 있는 select와 input에 여러분이 원하는 방법으로 change한번 걸어보기
+        //div에는 dbclick이벤트도 걸어보세요.
+
+        function aaa(){
+            alert("good");
+        }
+
+        var bbb = document.getElementById("text");
+        bbb.onmouseover = function(){
+            console.log('test');
+        } 
+
+        var ccc = document.getElementById("click");
+        ccc.addEventListener("dblclick",function(){
+            console.log('good');
+        })
+
+
+        var ddd = document.getElementById("btn");
+        ddd.onmouseover = function(){
+            alert("dont't click");
+        }
+
+
+
+        // var hhh = document.getElementById("btn");
+        
+
+        // function method(){
+        //     console.log('test success')
+        // }
+
+
+
+    </script>
+
+</body>
+</html>

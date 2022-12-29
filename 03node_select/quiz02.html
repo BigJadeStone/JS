@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>(select에서 value속성은 선택된 값을 의미합니다)</h3>
+    <h3>change이벤트</h3>
+    
+    <h2 id="text">단어를 선택해주세요</h2>
+
+    <select onchange="change(this)" >
+        <option>한국어</option>
+        <option>English</option>
+        <option>중국어</option>
+    </select>
+    
+    <script>
+
+        var text = document.getElementById("text");
+
+        function change(select){ 
+            if(select.value == "한국어" ){
+                text.innerHTML = "한국어 입니다."
+            } else if(select.value == "English"){
+                text.innerHTML = "영어 입니다."
+            } else if(select.value == "중국어"){
+                text.innerHTML = "중국어 입니다."
+            }
+        };
+    </script>
+
+</body>
+</html>
