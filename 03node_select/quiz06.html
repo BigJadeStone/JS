@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input:focus{
+            outline:none;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h3>onfocus - 인풋에 focus들어갈 때 동작, onblur - 인풋에 focus가 떠났을 때 동작</h3>
+    
+    <div>
+        <span>아이디</span> <!--4글자 이상-->
+        <input type="text" placeholder="4글자 이상" class="id">
+        <p class="id_alert"></p>
+    </div>
+    <div>
+        <span>비밀번호</span> <!--9글자 이상-->
+        <input type="password" placeholder="9글자 이상" class="pw">
+        <P class="pw_alert"></P>
+    </div>
+
+    <script>
+
+        var id = document.querySelector(".id");
+        var pw = document.querySelector(".pw");
+        var id_alert = document.querySelector(".id_alert");
+        var pw_alert = document.querySelector(".pw_alert");
+        
+        id.onfocus = function(){
+            id_alert.innerHTML = "";
+        }
+        pw.onfocus = function(){
+            pw_alert.innerHTML = "";
+        }
+
+        id.onblur = function(){
+
+         if(id.value.length <= 3){
+            id_alert.innerHTML = "아이디는 4글자 이상!"
+            id.style.border="3px solid red";
+         } else {
+            id.style.border="3px solid green";
+         }
+
+        }
+
+        pw.onblur = function(){
+
+            if(pw.value.length <= 8){
+                pw_alert.innerHTML = "pw는 9자 이상!"
+                pw.style.border = "3px solid red";
+            } else {
+                pw.style.border = "3px solid green";
+            }
+
+        }
+
+    </script>
+
+
+<!-- 
+    <input type="text" class="xx">    
+
+    
+        <script>
+        var xx = document.querySelector(".xx");
+        xx.onfocus = function(){
+            console.log("포커스 진입");
+        }
+        xx.onblur = function(){
+            console.log("포커스 아웃");
+        }
+
+    </script>  -->
+
+
+</body>
+</html>

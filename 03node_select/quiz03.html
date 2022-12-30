@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="checkbox" name="seat" value="1">1번
+    <input type="checkbox" name="seat" value="2">2번
+    <input type="checkbox" name="seat" value="3">3번
+    <input type="checkbox" name="seat" value="4">4번
+    <input type="checkbox" name="seat" value="5">5번
+    <input type="checkbox" name="seat" value="6">6번
+    <input type="checkbox" name="seat" value="7">7번
+    <input type="checkbox" name="seat" value="8">8번
+    <input type="checkbox" name="seat" value="9">9번
+
+    <button type="button" id="btn">클릭</button>
+
+    <script>
+        //버튼을 클릭시, 좌석이 적어도 한개이상 체크되어있지 않다면 경고창을 띄우세요.
+
+        var btn = document.getElementById("btn");
+        var seat = document.querySelectorAll("input");
+
+        //getElementsClassName() 으로 class이름으로 하면 왜 값이 안갖고와지는지 ?
+
+        // console.log(seat[0].checked);
+
+        btn.onclick = function(){
+        
+            var check_seat = 0;
+            var show_seatNum = ' ';
+             for(var i = 0; i<seat.length; i++){
+                 if(seat[i].checked === true){
+                    check_seat++;
+                    show_seatNum += seat[i].value + '번'
+                }
+             }
+
+             if(check_seat === 0){
+                alert('좌석을 선택해주세요.')
+             } else {
+                alert('좌석' + show_seatNum + '이 선택되었습니다.')
+             }
+
+        }
+
+    </script>
+
+</body>
+</html>

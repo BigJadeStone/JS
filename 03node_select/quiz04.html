@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>JS카운트 만들기 - this, innerHTML, value속성을 사용하면 됩니다.</h3>
+
+    <input type="number" value="0">
+    <button onclick="calc(this)">증가</button>
+    <button onclick="calc(this)">감소</button>
+
+    <script>
+
+        // var btn = document.querySelectorAll("button");
+        var count = document.querySelector("input");
+        function calc(button){
+            if(button.innerHTML === "증가") count.value++;
+            if(button.innerHTML === "감소"){
+                if(count.value === '0'){
+                    alert("0이하로는 감소할 수 없습니다.")
+                } else {
+                    count.value--;
+                }
+            }
+        }
+
+        /*
+        console.log( typeof count.value);
+        위에 input 태그의 value 값은 String 타입이다.
+        그런데 아래 calc 함수에서는 증가나 감소 버튼을 눌렀을 때,
+        input태그.value에 ++ 나 -- 로 값을 증감해주도록 처리했다.
+        String 타입에 ++나 -- 가 어떻게 가능한걸까?
+
+        그 이유는
+        script언어 특성상 
+        String 타입의 모양이 계산이 가능한 모양이면 자동 형변환 되기때문이다.
+        자바에서는 불가능한 일이지만 script언어에서는 가능.
+        */
+
+    </script>
+    
+</body>
+</html>
