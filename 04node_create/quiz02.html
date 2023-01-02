@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>step1</h3>
+    <h3>input은 지우는게 아니라 display를 제어하세요</h3>
+    <h3>할일 목록 만들기</h3>
+    <h3 id="id" display="none"></h3>
+    <div>
+        <button type="button" onclick="delAll()">전체삭제하기</button>
+    </div>
+    <div>
+        <input type="text" placeholder="이름을 입력하세요" class="id_input">
+        <button class="id_btn">확인</button>
+    </div>
+    <div>
+        <input type="text" placeholder="당신의 할일을 적으세요" class="input">
+        <button type="button" class="btn" onclick="check()">확인</button>
+
+        <ul class="todolist">
+            
+        </ul>
+    </div>
+
+    <script>
+        //이름을 입력하세요
+        var id = document.getElementById("id");
+        var id_input = document.querySelector(".id_input");
+        var id_btn = document.querySelector(".id_btn");
+
+        id_btn.onclick = function(){
+            if(id_input.value !== ''){
+                id_btn.parentElement.style.display = "none";
+                id.innerHTML = id_input.value + "님 안녕하세요";
+            } else {
+                alert("이름을 입력하세요");
+            }
+        }
+        
+
+
+        //할일을 적으세요
+        var input = document.querySelector(".input");
+        var ul = input.parentElement.lastElementChild;
+        // var ul = documnet.querySelector(".todolist");
+
+        function check(){
+            // console.log(ul);
+            //console.log(input.parentElement.lastElementChild);
+            // console.log(input.value);
+
+            if(input.value !== '' ){
+                var li = document.createElement("li");
+                li.innerHTML = input.value;
+                input.value = '';
+                //li.innerHTML = input.value + "<button class='del_btn' onclick='del(this)'>x</button>";
+                // console.log(li);
+                var button = document.createElement("button");
+                button.innerHTML = "삭제(더블클릭)"
+                button.ondblclick= del;
+                li.appendChild(button)
+                ul.appendChild(li);
+                //위이동
+                var toHigh_btn = document.createElement("button");
+                toHigh_btn.innerHTML="위로";
+                toHigh_btn.onclick = toHigh;
+                li.appendChild(toHigh_btn);
+                //아래이동
+                var toLow_btn = document.createElement("button");
+                toLow_btn.innerHTML="아래로";
+                toLow_btn.onclick = toLow;
+                li.appendChild(toLow_btn);
+
+            } else {
+                alert("할일을 적어주세요.");
+            }
+        }
+
+        function del(){
+            this.parentElement.remove();
+        }
+
+        function toHigh(){
+            // console.log("high");
+            var current = this.parentElement;
+            var previous = this.parentElement.previousElementSibling;
+            // console.log(previous);
+            if(previous === null){
+                alert("더이상 올라갈 곳이 없습니다");
+                return;
+            }
+            this.parentElement.parentElement.insertBefore(current,previous);
+        }
+
+        function toLow(){
+            // console.log("low");
+            var current = this.parentElement;
+            var next = this.parentElement.nextElementSibling;
+            // console.log(next);
+            if(next === null){
+                alert("더이상 내려갈 곳이 없습니다");
+                return;
+            }
+            this.parentElement.parentElement.insertBefore(next,current);
+        }
+
+        function delAll(){//ul의 자손태그 다 지우면 됨.
+            // console.log(ul.children);
+            var toDoList = ul.children;
+            var length = ul.children.length;
+            for(var i=0; i<length; i++){
+                toDoList[0].remove();
+            }
+        }
+
+    </script>
+
+</body>
+</html>
