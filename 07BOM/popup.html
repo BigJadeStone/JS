@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    팝업창
+
+    <input type="checkbox" class="x">오늘 하루 이창을 열지않기
+
+    <script>
+        var x = document.querySelector(".x");
+        x.onclick = function(){
+            //쿠키..
+            window.close();
+
+            //opener  -> https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EB%B6%80%EB%AA%A8%EC%B0%BD-%E2%9E%9C-%EC%9E%90%EC%8B%9D%EC%B0%BD%EC%9D%98-%EA%B0%92-%EC%A0%84%EB%8B%AC 참고
+        }
+    </script>
+    
+</body>
+</html>
