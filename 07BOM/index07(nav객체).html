@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var userAgent = navigator.userAgent.toLowerCase();
+
+        // console.log(navigator);
+        // console.log(userAgent.lastIndexOf("edg")); 
+
+        //사용자가 접속한 브라우저를 userAgent라는 속성으로 알 수 있음.
+        if(userAgent.lastIndexOf("edg") != -1){
+            console.log("엣지");
+        } else if(userAgent.lastIndexOf("firefox") != -1){
+            console.log("파이어폭스");
+        } else if(userAgent.lastIndexOf("whale") != -1){
+            console.log("웨일");
+        } else if(userAgent.lastIndexOf("chrome") != -1){
+            console.log("크롬");
+        }
+
+    </script>
+
+</body>
+</html>

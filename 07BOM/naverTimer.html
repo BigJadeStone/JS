@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button{font-size: 25px;}
+        
+    </style>
+
+</head>
+<body>
+
+    <h2>네이버 타이머 도전하기</h2> 
+    <a href="https://ssl.pstatic.net/sstatic/keypage/outside/timer/timer_160627_2.html">네이버타이머</a>
+    <h3>조건</h3>
+    1.select태그는 시간:99 or 분:60 or 초:60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리합니다.<br>
+    2.시간설정 버튼을 클릭하면 시간이 세팅됩니다.<br>
+    3.타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화 됩니다<br>
+    4.사용자가 버튼을 잘못클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.<br>
+
+    <h2>시간을 선택하세요</h2>
+
+    <div>
+        <select class="hours"></select>시간
+        <select class="minutes"></select>분
+        <select class="seconds"></select>초
+        <button class="start">start</button>
+        <button class="reset">reset</button>
+    </div>
+    
+    <div class="showWrap">
+        <span class="showHour">00</span>
+        <span> :</span>
+        <span class="showMin">00</span>
+        <span> :</span>
+        <span class="showSeconds">00</span>
+    </div>
+    
+
+    <script>
+
+        var hours = document.querySelector(".hours");
+        var minutes = document.querySelector(".minutes");
+        var seconds = document.querySelector(".seconds");
+        var start = document.querySelector(".start");
+        var reset = document.querySelector(".reset");
+
+        //시간을 보이는 부분의 태그
+        var showHour = document.querySelector(".showHour");
+        var showMin = document.querySelector(".showMin");
+        var showSeconds = document.querySelector(".showSeconds");
+
+        //시간 option 추가하기
+        for(var i = 0; i<=99; i++){
+            var option = document.createElement("option");
+            option.innerHTML = i;
+            hours.appendChild(option);
+        }
+        //분 option 추가하기
+        for(var i = 0; i<=60; i++){
+            var option = document.createElement("option");
+            option.innerHTML = i;
+            minutes.appendChild(option);
+        }
+        //초 option 추가하기
+        for(var i = 0; i<=60; i++){
+            var option = document.createElement("option");
+            option.innerHTML = i;
+            seconds.appendChild(option);
+        }
+
+        //start버튼에  pause 토글버튼 달기
+        start.onclick = function(){
+            start.classList.toggle("pause");
+            // console.log(start.classList.contains("pause"));
+            if(start.classList.contains("pause") == true){
+                //타이머가 작동되었을 때
+                start.innerHTML = "pause";
+                
+                //시간표시부분에 select한 시분초 넣기
+                //시간
+                var selectHour = document.querySelectorAll(".hours option");
+                for(var i=0; i<selectHour.length; i++){
+                    if(selectHour[i].selected === true){
+                        showHour.innerHTML = selectHour[i].innerHTML;
+                        if(showHour.innerHTML.length == 1){
+                            showHour.innerHTML= "0"+showHour.innerHTML;
+                        }
+                    }
+                }
+                //분
+                var selectMin = document.querySelectorAll(".minutes option");
+                for(var i=0; i<selectMin.length; i++){
+                    if(selectMin[i].selected === true){
+                        showMin.innerHTML = selectMin[i].innerHTML;
+                        if(showMin.innerHTML.length == 1){
+                            showMin.innerHTML= "0"+showMin.innerHTML;
+                        }
+                    }
+                }
+                //초
+                var selectSeconds = document.querySelectorAll(".seconds option");
+                for(var i=0; i<selectSeconds.length; i++){
+                    if(selectSeconds[i].selected === true){
+                        showSeconds.innerHTML = selectSeconds[i].innerHTML;
+                        if(showSeconds.innerHTML.length == 1){
+                            showSeconds.innerHTML= "0"+showSeconds.innerHTML;
+                        }
+                    }
+                }
+
+                // 카운트 다운 기능 추가
+                
+                var count = setInterval(countdown,1000);
+                
+                
+
+                
+
+
+            } else {
+                //타이머가 중지되었을 때
+                start.innerHTML = "start";
+            }
+        }
+        
+        //카운트 다운 함수 선언
+        var countdown = function(){
+            showSeconds.innerHTML != 0 ? showSeconds.innerHTML-=1 : showMin.innerHTML != 0 ? showMin.innerHTML -= 1 : showHour.innerHTML != 0 ? showHour.innerHTML-=1 :  clearInterval(count);
+            // console.log("5");
+        }
+
+        
+
+    </script>
+    
+</body>
+</html>
