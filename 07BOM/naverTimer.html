@@ -113,25 +113,43 @@
                     }
                 }
 
-                // 카운트 다운 기능 추가
-                
+                // 카운트 다운 시작 
                 var count = setInterval(countdown,1000);
-                
-                
-
-                
 
 
             } else {
                 //타이머가 중지되었을 때
                 start.innerHTML = "start";
+                
             }
+        }
+
+        reset.onclick = function(){
+            showHour.innerHTML = "00";
+            showMin.innerHTML = "00";
+            showSeconds.innerHTML = "00";
+            // hours.firstElementChild.innerHTML = "0";  안됨
+            // minutes.firstElementChild.innerHTML = "0"; 
+            // seconds.firstElementChild.innerHTML = "0"; 
         }
         
         //카운트 다운 함수 선언
         var countdown = function(){
-            showSeconds.innerHTML != 0 ? showSeconds.innerHTML-=1 : showMin.innerHTML != 0 ? showMin.innerHTML -= 1 : showHour.innerHTML != 0 ? showHour.innerHTML-=1 :  clearInterval(count);
-            // console.log("5");
+            if(showSeconds.innerHTML != 00){
+                showSeconds.innerHTML -= 1;
+            } else {//초 타이머가 00이 되었을 때 분의 타이머를 확인
+                if(showMin.innerHTML != 00){//분 타이머의 수가 00이 아니라면
+                    showMin.innerHTML -= 1;
+                    showSeconds.innerHTML += 60;
+                } else {//분이 0이 되었을 때 시간의 타이머를 확인
+                    if(showHour.innerHTML != 00){//시간타이머의 숫자가00이 아니라면
+                        showHour.innerHTML -= 1;
+                        showMin.innerHTML += 60;
+                    } else {//시간이 타이머마저 0이 되었다면 inerval함수 종료
+                        clearInterval(count);
+                    }
+                }
+            }
         }
 
         
