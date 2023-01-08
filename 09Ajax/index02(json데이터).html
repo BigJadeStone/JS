@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <button onclick="ajax()">json파일 ajax요청</button>
+    <!-- <button onclick="ajax()">json파일 ajax요청</button>
     <div class="result"></div>
 
     <script>
@@ -27,12 +27,12 @@
             })
 
         }
-    </script>
+    </script> -->
 
 
 
 
-    <!-- <button onclick="ajax2()">xml데이터 ajax요청</button>
+     <button onclick="ajax2()">xml데이터 ajax요청</button>
 
     <script>
         function ajax2(){
@@ -45,7 +45,7 @@
             .then(function(data){
                 console.log(data);
                 var result = new DOMParser().parseFromString(data, "text/xml");
-                // console.log(result);
+                // console.log(result); //json 형식으로 받아짐.
                 // console.log(result.querySelector("datas"));
 
                 var arr= result.querySelectorAll("datas > data");
@@ -59,7 +59,7 @@
             })
 
         }
-    </script> -->
+    </script> 
 
     
 </body>

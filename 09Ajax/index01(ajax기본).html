@@ -31,22 +31,25 @@
             //     console.log(response);
             // })
 
-            //2nd
-            /*
-            fetch("hi.txt").then(function(response){
-                
-                if(response.status != 200){
-                    alert("통신에 에러가 발생했습니다.");
-                    return;
-                }
 
-                // var a = response.text();
-                // console.log(a); //프로미스
-                response.text().then(function(data){
-                    console.log(data);
-                });
-            })
-            */
+            //2nd
+            
+            // fetch("hi.txt").then(function(response){
+                
+            //     if(response.status != 200){
+            //         alert("통신에 에러가 발생했습니다.");
+            //         return;
+            //     }
+
+            //     // var a = response.text();
+            //     // console.log(a); //프로미스
+            //     response.text().then(function(data){
+            //         console.log(data);
+            //     });
+            // })
+            
+
+            
 
             //3nd - 콜백에 리턴을 걸면 fetch가 다시 Promise를 반환
             //  fetch("hi.txt").then(function(res){
@@ -72,15 +75,18 @@
             // console.log(3);
 
             //내가 연습
-            fetch("hi.json")
-            .then(function(res){
-                // console.log(res);
-                return res.json();
-            })
-            .then(function(data){
-                console.log(data);
-                console.log(data.topic);
-            })
+            // fetch("hi.json")
+            // .then(function(res){
+            //     // console.log(res);
+            //     return res.json();
+            // })
+            // .then(function(data){
+            //     console.log(data);
+            //     console.log(data.topic);
+            // })
+
+
+            
 
 
         }
